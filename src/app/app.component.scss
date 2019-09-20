@@ -24,6 +24,9 @@
 
   .input-group-append.zero-btn {
     width: 10%;
+    &:hover {
+      cursor: pointer;
+    }
     .input-group-text {
       width: 100%;
       text-align: right;
