@@ -1,0 +1,41 @@
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  text-align: right;
+}
+
+.parameter-input {
+  .input-group-prepend {
+    width: 40%;
+    .input-group-text {
+      width: 100%;
+    }
+  }
+
+  .input-group-append {
+    width: 20%;
+    .input-group-text {
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  .input-group-append.zero-btn {
+    width: 10%;
+    .input-group-text {
+      width: 100%;
+      text-align: right;
+    }
+  }
+}
+
+.calculated-output {
+  .input-group-prepend {
+    width: 40%;
+    .input-group-text {
+      width: 100%;
+    }
+  }
+}
