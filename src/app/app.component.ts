@@ -245,7 +245,6 @@ export class AppComponent {
   }
 
   obliczOmi() {
-    console.log(this.input);
     this.obliczKlasyfikacjeDlaMasyKoluwium();
     this.obliczKlasyfikacjeDlaObjetosciKoluwium();
     this.obliczKlasyfikacjeDlaPredkosciKoluwium();
