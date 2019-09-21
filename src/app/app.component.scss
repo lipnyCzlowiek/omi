@@ -1,44 +1,96 @@
-.form-row {
-  margin-bottom: 1rem;
+* {
+  box-sizing: border-box;
 }
 
-.form-control {
-  text-align: right;
+.app {
+  position: relative;
+  width: 960px;
+  margin: 0 auto;
 }
 
-.parameter-input {
-  .input-group-prepend {
-    width: 40%;
-    .input-group-text {
-      width: 100%;
-    }
-  }
+.param-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 73px 46px;
+}
 
-  .input-group-append {
-    width: 20%;
-    .input-group-text {
-      width: 100%;
-      text-align: right;
-    }
-  }
+.param {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  margin-bottom: 30px;
 
-  .input-group-append.zero-btn {
-    width: 10%;
+  &__icon {
+    position: relative;
+    display: block;
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 1000;
     &:hover {
-      cursor: pointer;
+      & > .tooltip {
+        display: block;
+      }
     }
-    .input-group-text {
-      width: 100%;
-      text-align: right;
+  }
+
+  &__input,
+  &__output {
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  &__input {
+    background: none;
+    width: 129px;
+    outline: 0;
+    border: 0;
+  }
+
+  &__output {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: 135px;
+
+    &.joint-output {
+      position: relative;
+      top: 34px;
     }
   }
 }
 
-.calculated-output {
-  .input-group-prepend {
-    width: 40%;
-    .input-group-text {
-      width: 100%;
-    }
+.tooltip {
+  display: none;
+
+  position: absolute;
+  bottom: 48px;
+  left: -32px;
+
+  padding: 11px 24px;
+  width: 300px;
+  height: 75px;
+
+  background-image: url("./../assets/tooltip_box_pointer.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  line-height: 53px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.output-box {
+  position: absolute;
+  top: 146px;
+  left: 544px;
+
+  .omi {
+    display: inline-block;
+    font-size: 48px;
+    width: 200px;
+    text-align: center;
   }
 }

@@ -1,371 +1,136 @@
-<div class="container">
-  <br />
-  <div class="card">
-    <div class="card-body">
-      <h3>OMI</h3>
-    </div>
-  </div>
-  <br />
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-9">
-          <form>
-            <!-- Masa koluwium -->
-            <div class="form-row">
-              <!-- Input -->
-              <div class="input-group parameter-input col-9">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>Masa koluwium</strong>
-                  </div>
-                </div>
-                <input
-                  type="number"
-                  class="form-control user-input"
-                  id="masaKoluwium"
-                  name="masaKoluwium"
-                  placeholder="N"
-                  min="0"
-                  [ngModel]="input.masaKoluwium"
-                  (focus)="$event.target.value = null"
-                  (input)="
-                    obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)
-                  "
-                />
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <strong>mln TON</strong>
-                  </div>
-                </div>
-                <div class="input-group-append zero-btn">
-                  <div
-                    class="btn btn-dark btn-block"
-                    (click)="
-                      this.input.masaKoluwium = null;
-                      obliczKlasyfikacjeDlaMasyKoluwium()
-                    "
-                  >
-                    N
-                  </div>
-                </div>
-              </div>
-              <!-- Output -->
-              <div class="input-group calculated-output col-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>M</strong>
-                  </div>
-                </div>
-                <input
-                  [ngModel]="output.m"
-                  type="number"
-                  class="form-control"
-                  id="M"
-                  name="M"
-                  disabled
-                />
-              </div>
-            </div>
-            <!-- Objetosc koluwium -->
-            <div class="form-row">
-              <!-- Input -->
-              <div class="input-group parameter-input col-9">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>Objętość koluwium</strong>
-                  </div>
-                </div>
-                <input
-                  type="number"
-                  class="form-control user-input"
-                  id="objetoscKoluwium"
-                  name="objetoscKoluwium"
-                  placeholder="N"
-                  min="0"
-                  [ngModel]="input.objetoscKoluwium"
-                  (focus)="$event.target.value = null"
-                  (input)="
-                    obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)
-                  "
-                />
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <strong>mln m<sup>3</sup> </strong>
-                  </div>
-                </div>
-                <div class="input-group-append zero-btn">
-                  <div
-                    class="btn btn-dark btn-block"
-                    (click)="
-                      this.input.objetoscKoluwium = null;
-                      obliczKlasyfikacjeDlaObjetosciKoluwium()
-                    "
-                  >
-                    N
-                  </div>
-                </div>
-              </div>
-              <!-- Output -->
-              <div class="input-group calculated-output col-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>V</strong>
-                  </div>
-                </div>
-                <input
-                  [ngModel]="output.v"
-                  type="number"
-                  class="form-control"
-                  id="V"
-                  name="V"
-                  disabled
-                />
-              </div>
-            </div>
-            <!-- Predkosc koluwium -->
-            <div class="form-row">
-              <!-- Input -->
-              <div class="input-group parameter-input col-9">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>Prędkość koluwium</strong>
-                  </div>
-                </div>
-                <input
-                  type="number"
-                  class="form-control user-input"
-                  id="predkoscKoluwium"
-                  name="predkoscKoluwium"
-                  placeholder="N"
-                  min="0"
-                  [ngModel]="input.predkoscKoluwium"
-                  (focus)="$event.target.value = null"
-                  (input)="
-                    obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)
-                  "
-                />
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <strong>m/s</strong>
-                  </div>
-                </div>
-                <div class="input-group-append zero-btn">
-                  <div
-                    class="btn btn-dark btn-block"
-                    (click)="
-                      this.input.predkoscKoluwium = null;
-                      obliczKlasyfikacjeDlaPredkosciKoluwium()
-                    "
-                  >
-                    N
-                  </div>
-                </div>
-              </div>
-              <!-- Output -->
-              <div class="input-group calculated-output col-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>S</strong>
-                  </div>
-                </div>
-                <input
-                  [ngModel]="output.s"
-                  type="number"
-                  class="form-control"
-                  id="S"
-                  name="S"
-                  disabled
-                />
-              </div>
-            </div>
-            <!-- Liczba Ofiar -->
-            <div class="form-row">
-              <!-- Input -->
-              <div class="input-group parameter-input col-9">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>Liczba ofiar</strong>
-                  </div>
-                </div>
-                <input
-                  type="number"
-                  class="form-control user-input"
-                  id="liczbaOfiar"
-                  name="form"
-                  placeholder="N"
-                  min="0"
-                  [ngModel]="input.liczbaOfiar"
-                  (focus)="$event.target.value = null"
-                  (input)="
-                    obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)
-                  "
-                />
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <strong>ofiar</strong>
-                  </div>
-                </div>
-                <div class="input-group-append zero-btn">
-                  <div
-                    class="btn btn-dark btn-block"
-                    (click)="
-                      this.input.liczbaOfiar = null;
-                      obliczKlasyfikacjeDlaLiczbyOfiar()
-                    "
-                  >
-                    N
-                  </div>
-                </div>
-              </div>
-              <!-- Output -->
-              <div class="input-group calculated-output col-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>O</strong>
-                  </div>
-                </div>
-                <input
-                  [ngModel]="output.o"
-                  type="number"
-                  class="form-control"
-                  id="O"
-                  name="O"
-                  disabled
-                />
-              </div>
-            </div>
-            <!-- Tryb obliczania strat -->
-            <div class="form-row">
-              <div class="col">
-                <br />
-                <label for="customRadio" class="control-label"
-                  >Straty ekonomiczne na podstawie:</label
-                >
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="stratyWartosc"
-                    name="customRadio"
-                    class="custom-control-input"
-                    [value]="true"
-                    [checked]="input.stratyPoWartosci === true"
-                    (change)="onRadioClick($event)"
-                  />
-                  <label class="custom-control-label" for="stratyWartosc"
-                    >Wartość strat</label
-                  >
-                </div>
-                <div class="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    id="stratyIlosc"
-                    name="customRadio"
-                    class="custom-control-input"
-                    [value]="false"
-                    [checked]="input.stratyPoWartosci === false"
-                    (change)="onRadioClick($event)"
-                  />
-                  <label class="custom-control-label" for="stratyIlosc"
-                    >Liczba budynków</label
-                  >
-                </div>
-              </div>
-            </div>
-            <!-- Straty Ekonomiczne -->
-            <div class="form-row">
-              <!-- Input -->
-              <div class="input-group parameter-input col-9">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>{{
-                      input.stratyPoWartosci
-                        ? "Wartość strat"
-                        : "Liczba budynków"
-                    }}</strong>
-                  </div>
-                </div>
-                <input
-                  type="number"
-                  class="form-control user-input"
-                  id="straty"
-                  name="straty"
-                  placeholder="N"
-                  min="0"
-                  [ngModel]="input.straty"
-                  (focus)="$event.target.value = null"
-                  (input)="
-                    input.straty = $event.target.value;
-                    obliczKlasyfikacjeDlaStratEkonomicznych($event.target.value)
-                  "
-                />
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <strong>{{
-                      input.stratyPoWartosci ? "mln $" : "budynków"
-                    }}</strong>
-                  </div>
-                </div>
-                <div class="input-group-append zero-btn">
-                  <div
-                    class="btn btn-dark btn-block"
-                    (click)="
-                      this.input.straty = null;
-                      obliczKlasyfikacjeDlaStratEkonomicznych()
-                    "
-                  >
-                    N
-                  </div>
-                </div>
-              </div>
-              <!-- Output -->
-              <div class="input-group calculated-output col-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <strong>E</strong>
-                  </div>
-                </div>
-                <input
-                  [ngModel]="output.e"
-                  type="number"
-                  class="form-control"
-                  id="E"
-                  name="E"
-                  disabled
-                />
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-3">
-          <form>
-            <div class="form-row">
-              <div class="col-12">
-                <label class="sr-only" for="inlineFormInputName">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inlineFormInputName"
-                  placeholder="OMI"
-                  [value]="output.omi"
-                  disabled
-                />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-12">
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-block"
-                  (click)="obliczOmi()"
-                >
-                  Oblicz
-                </button>
-              </div>
-            </div>
-          </form>
+<div class="app">
+  <img src="./../assets/background.jpg" alt="" width="960" />
+  <div class="param-box">
+    <!-- Masa koluwium -->
+    <div class="param">
+      <div class="param__icon">
+        <div class="tooltip animated bounceIn">
+          Masa koluwium
         </div>
       </div>
+      <input
+        type="text"
+        class="param__input"
+        id="masaKoluwium"
+        name="masaKoluwium"
+        [ngModel]="input.masaKoluwium"
+        (focus)="$event.target.value = null; input.masaKoluwium = null"
+        (input)="obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)"
+      />
+      <div class="param__output">{{ output.m }}</div>
     </div>
+
+    <!-- Objectsc koluwium -->
+    <div class="param">
+      <div class="param__icon">
+        <div class="tooltip animated bounceIn">
+          Objętość koluwium
+        </div>
+      </div>
+      <input
+        type="text"
+        class="param__input"
+        id="objetoscKoluwium"
+        name="objetoscKoluwium"
+        [ngModel]="input.objetoscKoluwium"
+        (focus)="$event.target.value = null; input.objetoscKoluwium = null"
+        (input)="obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)"
+      />
+      <div class="param__output">{{ output.v }}</div>
+    </div>
+
+    <!-- Predkosc koluwium -->
+    <div class="param">
+      <div class="param__icon">
+        <div class="tooltip animated bounceIn">
+          Prędkość koluwium
+        </div>
+      </div>
+      <input
+        type="text"
+        class="param__input"
+        id="predkoscKoluwium"
+        name="predkoscKoluwium"
+        [ngModel]="input.predkoscKoluwium"
+        (focus)="$event.target.value = null; input.predkoscKoluwium = null"
+        (input)="obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)"
+      />
+      <div class="param__output">{{ output.s }}</div>
+    </div>
+
+    <!-- Liczba ofiar -->
+    <div class="param">
+      <div class="param__icon">
+        <div class="tooltip animated bounceIn">
+          Liczba ofiar
+        </div>
+      </div>
+      <input
+        type="text"
+        class="param__input"
+        id="liczbaOfiar"
+        name="liczbaOfiar"
+        [ngModel]="input.liczbaOfiar"
+        (focus)="$event.target.value = null; input.liczbaOfiar = null"
+        (input)="obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)"
+      />
+      <div class="param__output">{{ output.o }}</div>
+    </div>
+
+    <!-- Straty po wratosci -->
+    <div class="param">
+      <div class="param__icon">
+        <div class="tooltip animated bounceIn">
+          Straty (wartość strat)
+        </div>
+      </div>
+      <input
+        type="text"
+        class="param__input"
+        id="wartoscStrat"
+        name="wartoscStrat"
+        #wartoscStrat
+        [ngModel]="input.stratyWartosc"
+        (focus)="
+          liczbaBudynkow.value = 'N';
+          $event.target.value = null;
+          input.stratyWartosc = null;
+          input.stratyLiczbaBud = null;
+          output.e = 0
+        "
+        (input)="obliczStratyPoWartosciStrat($event.target.value)"
+      />
+      <div class="param__output joint-output">{{ output.e }}</div>
+    </div>
+
+    <!-- Straty liczba budynkow -->
+    <div class="param">
+      <div class="param__icon">
+        <div class="tooltip animated bounceIn">
+          Straty (liczba budynków)
+        </div>
+      </div>
+      <input
+        type="text"
+        class="param__input"
+        id="liczbaBudynkow"
+        name="liczbaBudynkow"
+        #liczbaBudynkow
+        [ngModel]="input.stratyLiczbaBud"
+        (focus)="
+          wartoscStrat.value = 'N';
+          $event.target.value = null;
+          input.stratyWartosc = null;
+          input.stratyLiczbaBud = null;
+          output.e = 0
+        "
+        (input)="obliczStratyPoLiczbieBudynkow($event.target.value)"
+      />
+    </div>
+    <!-- End of param box -->
+  </div>
+
+  <div class="output-box">
+    <h1 class="omi">{{ output.omi }}</h1>
   </div>
 </div>

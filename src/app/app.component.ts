@@ -7,12 +7,12 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   input = {
-    masaKoluwium: 0,
-    objetoscKoluwium: 0,
-    predkoscKoluwium: 0,
-    liczbaOfiar: 0,
-    straty: 0,
-    stratyPoWartosci: false
+    masaKoluwium: null,
+    objetoscKoluwium: null,
+    predkoscKoluwium: null,
+    liczbaOfiar: null,
+    stratyLiczbaBud: null,
+    stratyWartosc: null
   };
 
   output = {
@@ -21,7 +21,7 @@ export class AppComponent {
     s: 0,
     o: 0,
     e: 0,
-    omi: ""
+    omi: "0"
   };
 
   weight = {
@@ -37,11 +37,18 @@ export class AppComponent {
     this.obliczKlasyfikacjeDlaObjetosciKoluwium();
     this.obliczKlasyfikacjeDlaPredkosciKoluwium();
     this.obliczKlasyfikacjeDlaLiczbyOfiar();
-    this.obliczKlasyfikacjeDlaStratEkonomicznych();
   }
 
-  obliczKlasyfikacjeDlaMasyKoluwium(value = this.input.masaKoluwium): void {
+  obliczKlasyfikacjeDlaMasyKoluwium(
+    value: any = this.input.masaKoluwium
+  ): void {
     let wynik = 0;
+
+    if (isNaN(value)) {
+      this.input.masaKoluwium = "N";
+      this.output.m = 0;
+      return;
+    }
 
     if (value <= 0) {
       wynik = 0;
@@ -69,12 +76,19 @@ export class AppComponent {
 
     this.input.masaKoluwium = value;
     this.output.m = wynik;
+    this.obliczOmi();
   }
 
   obliczKlasyfikacjeDlaObjetosciKoluwium(
-    value = this.input.objetoscKoluwium
+    value: any = this.input.objetoscKoluwium
   ): void {
     let wynik = 0;
+
+    if (isNaN(value)) {
+      this.input.objetoscKoluwium = "N";
+      this.output.v = 0;
+      return;
+    }
 
     if (value <= 0) {
       wynik = 0;
@@ -102,12 +116,19 @@ export class AppComponent {
 
     this.input.objetoscKoluwium = value;
     this.output.v = wynik;
+    this.obliczOmi();
   }
 
   obliczKlasyfikacjeDlaPredkosciKoluwium(
-    value = this.input.predkoscKoluwium
+    value: any = this.input.predkoscKoluwium
   ): void {
     let wynik = 0;
+
+    if (isNaN(value)) {
+      this.input.predkoscKoluwium = "N";
+      this.output.s = 0;
+      return;
+    }
 
     if (value <= 0) {
       wynik = 0;
@@ -135,10 +156,17 @@ export class AppComponent {
 
     this.input.predkoscKoluwium = value;
     this.output.s = wynik;
+    this.obliczOmi();
   }
 
-  obliczKlasyfikacjeDlaLiczbyOfiar(value = this.input.liczbaOfiar): void {
+  obliczKlasyfikacjeDlaLiczbyOfiar(value: any = this.input.liczbaOfiar): void {
     let wynik = 0;
+
+    if (isNaN(value)) {
+      this.input.liczbaOfiar = "N";
+      this.output.o = 0;
+      return;
+    }
 
     if (value <= 0) {
       wynik = 0;
@@ -166,26 +194,33 @@ export class AppComponent {
 
     this.input.liczbaOfiar = value;
     this.output.o = wynik;
+    this.obliczOmi();
   }
 
-  onRadioClick(event) {
-    this.input.stratyPoWartosci = event.target.value === "true";
-    this.input.straty = 0;
-    this.obliczKlasyfikacjeDlaStratEkonomicznych(this.input.straty);
-  }
+  // onRadioClick(event) {
+  //   this.input.stratyPoWartosci = event.target.value === "true";
+  //   this.input.straty = 0;
+  //   this.obliczKlasyfikacjeDlaStratEkonomicznych(this.input.straty);
+  // }
 
-  obliczKlasyfikacjeDlaStratEkonomicznych(value = this.input.straty): void {
-    if (this.input.stratyPoWartosci) {
-      this.obliczStratyPoWartościStrat(value);
-    } else {
-      this.obliczStratyPoLiczbieBudynkow(value);
-    }
+  // obliczKlasyfikacjeDlaStratEkonomicznych(value = this.input.straty): void {
+  //   if (this.input.stratyPoWartosci) {
+  //     this.obliczStratyPoWartościStrat(value);
+  //   } else {
+  //     this.obliczStratyPoLiczbieBudynkow(value);
+  //   }
 
-    this.input.straty = value;
-  }
+  //   this.input.straty = value;
+  // }
 
-  obliczStratyPoWartościStrat(value = this.input.straty): void {
+  obliczStratyPoWartosciStrat(value = this.input.stratyWartosc): void {
     let wynik = 0;
+
+    if (isNaN(value)) {
+      this.input.stratyWartosc = "N";
+      this.output.e = 0;
+      return;
+    }
 
     if (value <= 0) {
       wynik = 0;
@@ -212,10 +247,17 @@ export class AppComponent {
     }
 
     this.output.e = wynik;
+    this.obliczOmi();
   }
 
-  obliczStratyPoLiczbieBudynkow(value = this.input.straty): void {
+  obliczStratyPoLiczbieBudynkow(value = this.input.stratyLiczbaBud): void {
     let wynik = 0;
+
+    if (isNaN(value)) {
+      this.input.stratyLiczbaBud = "N";
+      this.output.e = 0;
+      return;
+    }
 
     if (value <= 0) {
       wynik = 0;
@@ -242,14 +284,14 @@ export class AppComponent {
     }
 
     this.output.e = wynik;
+    this.obliczOmi();
   }
 
   obliczOmi() {
-    this.obliczKlasyfikacjeDlaMasyKoluwium();
-    this.obliczKlasyfikacjeDlaObjetosciKoluwium();
-    this.obliczKlasyfikacjeDlaPredkosciKoluwium();
-    this.obliczKlasyfikacjeDlaLiczbyOfiar();
-    this.obliczKlasyfikacjeDlaStratEkonomicznych();
+    // this.obliczKlasyfikacjeDlaMasyKoluwium();
+    // this.obliczKlasyfikacjeDlaObjetosciKoluwium();
+    // this.obliczKlasyfikacjeDlaPredkosciKoluwium();
+    // this.obliczKlasyfikacjeDlaLiczbyOfiar();
 
     this.output.omi = (
       this.weight.wm * this.output.m +
