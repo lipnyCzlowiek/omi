@@ -14,7 +14,7 @@
         id="masaKoluwium"
         name="masaKoluwium"
         [ngModel]="input.masaKoluwium"
-        (focus)="$event.target.value = null; input.masaKoluwium = null"
+        (click)="$event.target.value = null; input.masaKoluwium = null"
         (input)="obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)"
       />
       <div class="param__output">{{ output.m }}</div>
@@ -33,7 +33,7 @@
         id="objetoscKoluwium"
         name="objetoscKoluwium"
         [ngModel]="input.objetoscKoluwium"
-        (focus)="$event.target.value = null; input.objetoscKoluwium = null"
+        (click)="$event.target.value = null; input.objetoscKoluwium = null"
         (input)="obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)"
       />
       <div class="param__output">{{ output.v }}</div>
@@ -52,7 +52,7 @@
         id="predkoscKoluwium"
         name="predkoscKoluwium"
         [ngModel]="input.predkoscKoluwium"
-        (focus)="$event.target.value = null; input.predkoscKoluwium = null"
+        (click)="$event.target.value = null; input.predkoscKoluwium = null"
         (input)="obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)"
       />
       <div class="param__output">{{ output.s }}</div>
@@ -71,7 +71,7 @@
         id="liczbaOfiar"
         name="liczbaOfiar"
         [ngModel]="input.liczbaOfiar"
-        (focus)="$event.target.value = null; input.liczbaOfiar = null"
+        (click)="$event.target.value = null; input.liczbaOfiar = null"
         (input)="obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)"
       />
       <div class="param__output">{{ output.o }}</div>
@@ -91,7 +91,7 @@
         name="wartoscStrat"
         #wartoscStrat
         [ngModel]="input.stratyWartosc"
-        (focus)="
+        (click)="
           liczbaBudynkow.value = 'N';
           $event.target.value = null;
           input.stratyWartosc = null;
@@ -117,7 +117,7 @@
         name="liczbaBudynkow"
         #liczbaBudynkow
         [ngModel]="input.stratyLiczbaBud"
-        (focus)="
+        (click)="
           wartoscStrat.value = 'N';
           $event.target.value = null;
           input.stratyWartosc = null;
