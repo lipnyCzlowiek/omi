@@ -95,3 +95,14 @@
     margin: 20px 0;
   }
 }
+
+.cross-icon {
+  position: relative;
+  top: 9px;
+  left: 8px;
+  height: 48px;
+  width: 48px;
+  background-image: url("./../assets/cross.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}

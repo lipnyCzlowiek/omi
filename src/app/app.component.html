@@ -8,16 +8,11 @@
           Masa koluwium
         </div>
       </div>
-      <input
-        type="text"
-        class="param__input"
-        id="masaKoluwium"
-        name="masaKoluwium"
-        [ngModel]="input.masaKoluwium"
-        (click)="$event.target.value = null; input.masaKoluwium = null"
-        (input)="obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)"
-      />
-      <div class="param__output">{{ output.m }}</div>
+      <input type="text" class="param__input" id="masaKoluwium" name="masaKoluwium" [ngModel]="input.masaKoluwium"
+        placeholder="N" (click)="$event.target.value = null; input.masaKoluwium = null; output.m = 0"
+        (input)="obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)" />
+      <div class="param__output">{{ output.m || '' }} <div *ngIf="output.m == false" class="cross-icon"></div>
+      </div>
     </div>
 
     <!-- Objectsc koluwium -->
@@ -27,16 +22,12 @@
           Objętość koluwium
         </div>
       </div>
-      <input
-        type="text"
-        class="param__input"
-        id="objetoscKoluwium"
-        name="objetoscKoluwium"
+      <input type="text" class="param__input" id="objetoscKoluwium" name="objetoscKoluwium" placeholder="N"
         [ngModel]="input.objetoscKoluwium"
-        (click)="$event.target.value = null; input.objetoscKoluwium = null"
-        (input)="obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)"
-      />
-      <div class="param__output">{{ output.v }}</div>
+        (click)="$event.target.value = null; input.objetoscKoluwium = null; output.v = 0"
+        (input)="obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)" />
+      <div class="param__output">{{ output.v || '' }} <div *ngIf="output.v == false" class="cross-icon"></div>
+      </div>
     </div>
 
     <!-- Predkosc koluwium -->
@@ -46,16 +37,12 @@
           Prędkość koluwium
         </div>
       </div>
-      <input
-        type="text"
-        class="param__input"
-        id="predkoscKoluwium"
-        name="predkoscKoluwium"
+      <input type="text" class="param__input" id="predkoscKoluwium" name="predkoscKoluwium" placeholder="N"
         [ngModel]="input.predkoscKoluwium"
-        (click)="$event.target.value = null; input.predkoscKoluwium = null"
-        (input)="obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)"
-      />
-      <div class="param__output">{{ output.s }}</div>
+        (click)="$event.target.value = null; input.predkoscKoluwium = null; output.s = 0"
+        (input)="obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)" />
+      <div class="param__output">{{ output.s || '' }} <div *ngIf="output.s == false" class="cross-icon"></div>
+      </div>
     </div>
 
     <!-- Liczba ofiar -->
@@ -65,16 +52,11 @@
           Liczba ofiar
         </div>
       </div>
-      <input
-        type="text"
-        class="param__input"
-        id="liczbaOfiar"
-        name="liczbaOfiar"
-        [ngModel]="input.liczbaOfiar"
-        (click)="$event.target.value = null; input.liczbaOfiar = null"
-        (input)="obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)"
-      />
-      <div class="param__output">{{ output.o }}</div>
+      <input type="text" class="param__input" id="liczbaOfiar" name="liczbaOfiar" [ngModel]="input.liczbaOfiar"
+        placeholder="N" (click)="$event.target.value = null; input.liczbaOfiar = null; output.o = 0"
+        (input)="obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)" />
+      <div class="param__output">{{ output.o || '' }} <div *ngIf="output.o == false" class="cross-icon"></div>
+      </div>
     </div>
 
     <!-- Straty po wratosci -->
@@ -84,23 +66,17 @@
           Straty (wartość strat)
         </div>
       </div>
-      <input
-        type="text"
-        class="param__input"
-        id="wartoscStrat"
-        name="wartoscStrat"
-        #wartoscStrat
-        [ngModel]="input.stratyWartosc"
-        (click)="
+      <input type="text" class="param__input" id="wartoscStrat" name="wartoscStrat" #wartoscStrat placeholder="N"
+        [ngModel]="input.stratyWartosc" (click)="
           liczbaBudynkow.value = 'N';
           $event.target.value = null;
           input.stratyWartosc = null;
           input.stratyLiczbaBud = null;
           output.e = 0
-        "
-        (input)="obliczStratyPoWartosciStrat($event.target.value)"
-      />
-      <div class="param__output joint-output">{{ output.e }}</div>
+        " (input)="obliczStratyPoWartosciStrat($event.target.value)" />
+      <div class="param__output joint-output">{{ output.e || '' }} <div *ngIf="output.e == false" class="cross-icon">
+        </div>
+      </div>
     </div>
 
     <!-- Straty liczba budynkow -->
@@ -110,22 +86,14 @@
           Straty (liczba budynków)
         </div>
       </div>
-      <input
-        type="text"
-        class="param__input"
-        id="liczbaBudynkow"
-        name="liczbaBudynkow"
-        #liczbaBudynkow
-        [ngModel]="input.stratyLiczbaBud"
-        (click)="
+      <input type="text" class="param__input" id="liczbaBudynkow" name="liczbaBudynkow" #liczbaBudynkow placeholder="N"
+        [ngModel]="input.stratyLiczbaBud" (click)="
           wartoscStrat.value = 'N';
           $event.target.value = null;
           input.stratyWartosc = null;
           input.stratyLiczbaBud = null;
           output.e = 0
-        "
-        (input)="obliczStratyPoLiczbieBudynkow($event.target.value)"
-      />
+        " (input)="obliczStratyPoLiczbieBudynkow($event.target.value)" />
     </div>
     <!-- End of param box -->
   </div>
