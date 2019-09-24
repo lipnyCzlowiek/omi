@@ -11,7 +11,7 @@
       <input type="text" class="param__input" id="masaKoluwium" name="masaKoluwium" [ngModel]="input.masaKoluwium"
         placeholder="N" (click)="$event.target.value = null; input.masaKoluwium = null; output.m = 0"
         (input)="obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)" />
-      <div class="param__output">{{ output.m || '' }} <div *ngIf="output.m == false" class="cross-icon"></div>
+      <div class="param__output">{{ output.m || '' }} <div *ngIf="output.m == 0" class="cross-icon"></div>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
         [ngModel]="input.objetoscKoluwium"
         (click)="$event.target.value = null; input.objetoscKoluwium = null; output.v = 0"
         (input)="obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)" />
-      <div class="param__output">{{ output.v || '' }} <div *ngIf="output.v == false" class="cross-icon"></div>
+      <div class="param__output">{{ output.v || '' }} <div *ngIf="output.v == 0" class="cross-icon"></div>
       </div>
     </div>
 
@@ -41,7 +41,7 @@
         [ngModel]="input.predkoscKoluwium"
         (click)="$event.target.value = null; input.predkoscKoluwium = null; output.s = 0"
         (input)="obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)" />
-      <div class="param__output">{{ output.s || '' }} <div *ngIf="output.s == false" class="cross-icon"></div>
+      <div class="param__output">{{ output.s || '' }} <div *ngIf="output.s == 0" class="cross-icon"></div>
       </div>
     </div>
 
@@ -55,7 +55,7 @@
       <input type="text" class="param__input" id="liczbaOfiar" name="liczbaOfiar" [ngModel]="input.liczbaOfiar"
         placeholder="N" (click)="$event.target.value = null; input.liczbaOfiar = null; output.o = 0"
         (input)="obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)" />
-      <div class="param__output">{{ output.o || '' }} <div *ngIf="output.o == false" class="cross-icon"></div>
+      <div class="param__output">{{ output.o || '' }} <div *ngIf="output.o == 0" class="cross-icon"></div>
       </div>
     </div>
 
@@ -74,7 +74,7 @@
           input.stratyLiczbaBud = null;
           output.e = 0
         " (input)="obliczStratyPoWartosciStrat($event.target.value)" />
-      <div class="param__output joint-output">{{ output.e || '' }} <div *ngIf="output.e == false" class="cross-icon">
+      <div class="param__output joint-output">{{ output.e || '' }} <div *ngIf="output.e == 0" class="cross-icon">
         </div>
       </div>
     </div>
