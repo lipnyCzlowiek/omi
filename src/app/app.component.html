@@ -1,104 +1,133 @@
 <div class="app">
-  <img src="./../assets/background.jpg" alt="" width="960" />
-  <div class="param-box">
-    <!-- Masa koluwium -->
-    <div class="param">
-      <div class="param__icon">
-        <div class="tooltip animated bounceIn">
-          Masa koluwium
-        </div>
-      </div>
-      <input type="text" class="param__input" id="masaKoluwium" name="masaKoluwium" [ngModel]="input.masaKoluwium"
-        placeholder="N" (click)="$event.target.value = null; input.masaKoluwium = null; output.m = 0"
-        (input)="obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)" />
-      <div class="param__output">{{ output.m || '' }} <div *ngIf="output.m == 0" class="cross-icon"></div>
-      </div>
-    </div>
+	<img src="./../assets/background.jpg" alt="" width="960" />
+	<div class="param-box">
+		<!-- Masa koluwium -->
+		<div class="param">
+			<div class="param__icon">
+				<div class="tooltip animated bounceIn">
+					Masa koluwium
+				</div>
+			</div>
+			<input type="text" class="param__input" id="masaKoluwium" name="masaKoluwium" [ngModel]="input.masaKoluwium"
+				placeholder="N" (click)="$event.target.value = ''; input.masaKoluwium = ''; output.m = 0"
+				(input)="obliczKlasyfikacjeDlaMasyKoluwium($event.target.value)" />
+			<div class="param__output">
+				<ng-container *ngIf="input.masaKoluwium != ''">
+					{{ output.m }}
+				</ng-container>
+				<ng-container *ngIf="input.masaKoluwium == ''">
+					<div class="cross-icon"></div>
+				</ng-container>
+			</div>
+		</div>
 
-    <!-- Objectsc koluwium -->
-    <div class="param">
-      <div class="param__icon">
-        <div class="tooltip animated bounceIn">
-          Objętość koluwium
-        </div>
-      </div>
-      <input type="text" class="param__input" id="objetoscKoluwium" name="objetoscKoluwium" placeholder="N"
-        [ngModel]="input.objetoscKoluwium"
-        (click)="$event.target.value = null; input.objetoscKoluwium = null; output.v = 0"
-        (input)="obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)" />
-      <div class="param__output">{{ output.v || '' }} <div *ngIf="output.v == 0" class="cross-icon"></div>
-      </div>
-    </div>
+		<!-- Objectsc koluwium -->
+		<div class="param">
+			<div class="param__icon">
+				<div class="tooltip animated bounceIn">
+					Objętość koluwium
+				</div>
+			</div>
+			<input type="text" class="param__input" id="objetoscKoluwium" name="objetoscKoluwium" placeholder="N"
+				[ngModel]="input.objetoscKoluwium"
+				(click)="$event.target.value = ''; input.objetoscKoluwium = ''; output.v = 0"
+				(input)="obliczKlasyfikacjeDlaObjetosciKoluwium($event.target.value)" />
+			<div class="param__output">
+				<ng-container *ngIf="input.objetoscKoluwium != ''">
+					{{ output.v }}
+				</ng-container>
+				<ng-container *ngIf="input.objetoscKoluwium == ''">
+					<div class="cross-icon"></div>
+				</ng-container>
+			</div>
+		</div>
 
-    <!-- Predkosc koluwium -->
-    <div class="param">
-      <div class="param__icon">
-        <div class="tooltip animated bounceIn">
-          Prędkość koluwium
-        </div>
-      </div>
-      <input type="text" class="param__input" id="predkoscKoluwium" name="predkoscKoluwium" placeholder="N"
-        [ngModel]="input.predkoscKoluwium"
-        (click)="$event.target.value = null; input.predkoscKoluwium = null; output.s = 0"
-        (input)="obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)" />
-      <div class="param__output">{{ output.s || '' }} <div *ngIf="output.s == 0" class="cross-icon"></div>
-      </div>
-    </div>
+		<!-- Predkosc koluwium -->
+		<div class="param">
+			<div class="param__icon">
+				<div class="tooltip animated bounceIn">
+					Prędkość koluwium
+				</div>
+			</div>
+			<input type="text" class="param__input" id="predkoscKoluwium" name="predkoscKoluwium" placeholder="N"
+				[ngModel]="input.predkoscKoluwium"
+				(click)="$event.target.value = ''; input.predkoscKoluwium = ''; output.s = 0"
+				(input)="obliczKlasyfikacjeDlaPredkosciKoluwium($event.target.value)" />
+			<div class="param__output">
+				<ng-container *ngIf="input.predkoscKoluwium != ''">
+					{{ output.s }}
+				</ng-container>
+				<ng-container *ngIf="input.predkoscKoluwium == ''">
+					<div class="cross-icon"></div>
+				</ng-container>
+			</div>
+		</div>
 
-    <!-- Liczba ofiar -->
-    <div class="param">
-      <div class="param__icon">
-        <div class="tooltip animated bounceIn">
-          Liczba ofiar
-        </div>
-      </div>
-      <input type="text" class="param__input" id="liczbaOfiar" name="liczbaOfiar" [ngModel]="input.liczbaOfiar"
-        placeholder="N" (click)="$event.target.value = null; input.liczbaOfiar = null; output.o = 0"
-        (input)="obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)" />
-      <div class="param__output">{{ output.o || '' }} <div *ngIf="output.o == 0" class="cross-icon"></div>
-      </div>
-    </div>
+		<!-- Liczba ofiar -->
+		<div class="param">
+			<div class="param__icon">
+				<div class="tooltip animated bounceIn">
+					Liczba ofiar
+				</div>
+			</div>
+			<input type="text" class="param__input" id="liczbaOfiar" name="liczbaOfiar" [ngModel]="input.liczbaOfiar"
+				placeholder="N" (click)="$event.target.value = ''; input.liczbaOfiar = ''; output.o = 0"
+				(input)="obliczKlasyfikacjeDlaLiczbyOfiar($event.target.value)" />
+			<div class="param__output">
+				<ng-container *ngIf="input.liczbaOfiar != ''">
+					{{ output.o }}
+				</ng-container>
+				<ng-container *ngIf="input.liczbaOfiar == ''">
+					<div class="cross-icon"></div>
+				</ng-container>
+			</div>
+		</div>
 
-    <!-- Straty po wratosci -->
-    <div class="param">
-      <div class="param__icon">
-        <div class="tooltip animated bounceIn">
-          Straty (wartość strat)
-        </div>
-      </div>
-      <input type="text" class="param__input" id="wartoscStrat" name="wartoscStrat" #wartoscStrat placeholder="N"
-        [ngModel]="input.stratyWartosc" (click)="
-          liczbaBudynkow.value = 'N';
-          $event.target.value = null;
-          input.stratyWartosc = null;
-          input.stratyLiczbaBud = null;
+		<!-- Straty po wratosci -->
+		<div class="param">
+			<div class="param__icon">
+				<div class="tooltip animated bounceIn">
+					Straty (wartość strat)
+				</div>
+			</div>
+			<input type="text" class="param__input" id="wartoscStrat" name="wartoscStrat" #wartoscStrat placeholder="N"
+				[ngModel]="input.stratyWartosc" (click)="
+          liczbaBudynkow.value = '';
+          $event.target.value = '';
+          input.stratyWartosc = '';
+          input.stratyLiczbaBud = '';
           output.e = 0
         " (input)="obliczStratyPoWartosciStrat($event.target.value)" />
-      <div class="param__output joint-output">{{ output.e || '' }} <div *ngIf="output.e == 0" class="cross-icon">
-        </div>
-      </div>
-    </div>
+			<div class="param__output joint-output">
+				<ng-container *ngIf="input.stratyWartosc != '' || input.stratyLiczbaBud != ''">
+					{{ output.e }}
+				</ng-container>
+				<ng-container *ngIf="input.stratyWartosc == '' && input.stratyLiczbaBud == ''">
+					<div class="cross-icon"></div>
+				</ng-container>
+			</div>
+		</div>
 
-    <!-- Straty liczba budynkow -->
-    <div class="param">
-      <div class="param__icon">
-        <div class="tooltip animated bounceIn">
-          Straty (liczba budynków)
-        </div>
-      </div>
-      <input type="text" class="param__input" id="liczbaBudynkow" name="liczbaBudynkow" #liczbaBudynkow placeholder="N"
-        [ngModel]="input.stratyLiczbaBud" (click)="
-          wartoscStrat.value = 'N';
-          $event.target.value = null;
-          input.stratyWartosc = null;
-          input.stratyLiczbaBud = null;
+		<!-- Straty liczba budynkow -->
+		<div class="param">
+			<div class="param__icon">
+				<div class="tooltip animated bounceIn">
+					Straty (liczba budynków)
+				</div>
+			</div>
+			<input type="text" class="param__input" id="liczbaBudynkow" name="liczbaBudynkow" #liczbaBudynkow
+				placeholder="N" [ngModel]="input.stratyLiczbaBud" (click)="
+          wartoscStrat.value = '';
+          $event.target.value = '';
+          input.stratyWartosc = '';
+          input.stratyLiczbaBud = '';
           output.e = 0
         " (input)="obliczStratyPoLiczbieBudynkow($event.target.value)" />
-    </div>
-    <!-- End of param box -->
-  </div>
+		</div>
+		<!-- End of param box -->
+	</div>
 
-  <div class="output-box">
-    <h1 class="omi">{{ output.omi }}</h1>
-  </div>
+	<div class="output-box">
+		<h1 class="omi">{{ output.omi }}</h1>
+	</div>
 </div>
