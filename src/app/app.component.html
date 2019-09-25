@@ -97,7 +97,9 @@
           input.stratyWartosc = '';
           input.stratyLiczbaBud = '';
           output.e = 0
-        " (input)="obliczStratyPoWartosciStrat($event.target.value)" />
+		" (input)="obliczStratyPoWartosciStrat($event.target.value)" />
+
+
 			<div class="param__output joint-output">
 				<ng-container *ngIf="input.stratyWartosc != '' || input.stratyLiczbaBud != ''">
 					{{ output.e }}
